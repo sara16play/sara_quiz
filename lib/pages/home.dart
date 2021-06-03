@@ -26,22 +26,53 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
   final gooleSignIn = GoogleSignIn();
 
   googleSignIn() async {
-    GoogleSignInAccount? googleSignInAccount = await gooleSignIn.signIn();
+    try {
+      setState(() {
+        load = true;
+      });
 
-    if (googleSignInAccount != null) {
-      GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
+      GoogleSignInAccount? googleSignInAccount = await gooleSignIn.signIn();
 
-      AuthCredential credential = GoogleAuthProvider.credential(
-          idToken: googleSignInAuthentication.idToken,
-          accessToken: googleSignInAuthentication.accessToken);
+      if (googleSignInAccount != null) {
+        GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
 
-      var result = await auth.signInWithCredential(credential);
+        AuthCredential credential = GoogleAuthProvider.credential(
+            idToken: googleSignInAuthentication.idToken,
+            accessToken: googleSignInAuthentication.accessToken);
 
-      var user = await auth.currentUser!;
-      print(user.uid);
+        var result = await auth.signInWithCredential(credential);
 
-      return Future.value(true);
+        var user = await auth.currentUser!;
+        print(user.uid);
+
+        Navigator.pushReplacementNamed(context, "quiz");
+        setState(() {
+          load = false;
+        });
+        return Future.value(true);
+      }
+    } catch (e) {
+      setState(() {
+        load = false;
+
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text("Please check your Internet connection.."),
+              actions: <Widget>[
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("OK"))
+              ],
+            );
+          },
+        );
+      });
     }
   }
 
@@ -107,18 +138,18 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                   ),
                   RichText(
                       text: TextSpan(
-                          text: "",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          children: <TextSpan>[
-                        TextSpan(
-                          text: " Sara Play QUIZ",
+                          text: "SaraPlay ",
                           style: TextStyle(
                               fontSize: 29,
                               fontWeight: FontWeight.bold,
                               color: Colors.redAccent[700]),
+                          children: <TextSpan>[
+                        TextSpan(
+                          text: "QUIZ",
+                          style: TextStyle(
+                              fontSize: 29,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue),
                         )
                       ])),
                   SizedBox(
@@ -194,8 +225,10 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                     Buttons.GoogleDark,
                     text: "Sign up with Google",
                     onPressed: () => googleSignIn().whenComplete(() async {
-                      var user = await FirebaseAuth.instance.currentUser;
-                      Navigator.pushReplacementNamed(context, "quiz");
+                      // setState(() {
+                      //   load = true;
+                      // });
+                      //var user = await FirebaseAuth.instance.currentUser;
                     }),
                   ),
                   SizedBox(

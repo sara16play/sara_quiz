@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -165,8 +167,10 @@ class _MyRegState extends State<MyLogin> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title: Text("successful"),
-                                    content: Text("$Error"),
+                                    title: Text("Successful"),
+                                    content: Text(
+                                      "Successfully Login.. Press OK to continue..",
+                                    ),
                                     actions: <Widget>[
                                       FlatButton(
                                           onPressed: () {
