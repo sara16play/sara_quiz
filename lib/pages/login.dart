@@ -17,7 +17,7 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyRegState extends State<MyLogin> {
-  late String email, pass;
+  String email, pass;
   bool load = false;
   //GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   var auth = FirebaseAuth.instance;

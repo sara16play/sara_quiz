@@ -31,7 +31,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
         load = true;
       });
 
-      GoogleSignInAccount? googleSignInAccount = await gooleSignIn.signIn();
+      GoogleSignInAccount googleSignInAccount = await gooleSignIn.signIn();
 
       if (googleSignInAccount != null) {
         GoogleSignInAuthentication googleSignInAuthentication =
@@ -43,7 +43,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
 
         var result = await auth.signInWithCredential(credential);
 
-        var user = await auth.currentUser!;
+        var user = await auth.currentUser;
         print(user.uid);
 
         Navigator.pushReplacementNamed(context, "quiz");
@@ -121,18 +121,18 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
               child: Column(
                 children: <Widget>[
                   Container(
-                      height: 200,
-                      width: 230,
+                      height: 100,
+                      //width: 330,
                       child: Image(
-                        image: AssetImage("images/q3.png"),
+                        image: AssetImage("images/q19.png"),
                         fit: BoxFit.contain,
                       )),
 
-                  SizedBox(height: 0),
+                  SizedBox(height: 30),
                   Text(
                     "Welocome to",
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Colors.black),
                   ),
@@ -140,7 +140,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                       text: TextSpan(
                           text: "SaraPlay ",
                           style: TextStyle(
-                              fontSize: 29,
+                              fontSize: 30,
                               fontWeight: FontWeight.bold,
                               color: Colors.redAccent[700]),
                           children: <TextSpan>[
@@ -178,7 +178,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                             borderRadius: BorderRadius.circular(32),
                             elevation: 10,
                             child: MaterialButton(
-                              minWidth: 150,
+                              minWidth: 100,
                               onPressed: () {
                                 Navigator.pushReplacementNamed(context, "reg");
                               },
@@ -199,7 +199,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                             borderRadius: BorderRadius.circular(32),
                             elevation: 10,
                             child: MaterialButton(
-                              minWidth: 150,
+                              minWidth: 100,
                               onPressed: () {
                                 setState(() {
                                   load = true;

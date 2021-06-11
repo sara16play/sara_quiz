@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +16,8 @@ class MyReg extends StatefulWidget {
 }
 
 class _MyRegState extends State<MyReg> {
-  late String email;
-  late String pass;
+  String email;
+  String pass;
   bool load = false;
   var user;
   var auth = FirebaseAuth.instance;
@@ -199,7 +197,7 @@ class _MyRegState extends State<MyReg> {
                                   var user =
                                       await auth.createUserWithEmailAndPassword(
                                           email: email, password: pass);
-                                  if (user.additionalUserInfo!.isNewUser ==
+                                  if (user.additionalUserInfo.isNewUser ==
                                       true) {
                                     showDialog(
                                       context: context,

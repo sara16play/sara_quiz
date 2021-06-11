@@ -7,12 +7,49 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:575706509937:android:ee59f43badbbcf1ac461d0",
+        "android_client_info": {
+          "package_name": "com.example.quizapp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575706509937-l01i40av6obups3f39spdjgegodndvk1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTWv0j2Adp_jNDA5QRh8r0PTIxI0JSPiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575706509937-l01i40av6obups3f39spdjgegodndvk1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:575706509937:android:3e3c37c88d69ef65c461d0",
         "android_client_info": {
           "package_name": "com.saurav.sara_quiz"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "575706509937-7vi2dbdk8nem4f9hvmav315t2l52pnqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saurav.sara_quiz",
+            "certificate_hash": "0b3f518789d429d2bc7bf86ab29faa144c87742e"
+          }
+        },
         {
           "client_id": "575706509937-l01i40av6obups3f39spdjgegodndvk1.apps.googleusercontent.com",
           "client_type": 3

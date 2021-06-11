@@ -21,8 +21,8 @@ class _MyquizState extends State<Myquiz> {
   bool load = false;
   var controller1;
   var animation1;
-  var dn = auth.currentUser!.displayName;
-  var de = auth.currentUser!.email;
+  var dn = auth.currentUser.displayName;
+  var de = auth.currentUser.email;
   //var user = GoogleSignInAccount.currentUser;
   //var result = (await auth.signInWithCredential(credential)).user;
   var users;
@@ -34,8 +34,8 @@ class _MyquizState extends State<Myquiz> {
         load = true;
       });
       users = await auth.currentUser;
-      print(users!.providerData[0].providerId);
-      if (users!.providerData[0].providerId == 'google.com') {
+      print(users.providerData[0].providerId);
+      if (users.providerData[0].providerId == 'google.com') {
         await gooleSignIn.disconnect();
         print("done");
         setState(() {
@@ -73,7 +73,7 @@ class _MyquizState extends State<Myquiz> {
   }
 
   googleSignIn() async {
-    GoogleSignInAccount? googleSignInAccount = await gooleSignIn.signIn();
+    GoogleSignInAccount googleSignInAccount = await gooleSignIn.signIn();
 
     if (googleSignInAccount != null) {
       GoogleSignInAuthentication googleSignInAuthentication =
@@ -87,7 +87,7 @@ class _MyquizState extends State<Myquiz> {
 
       var result = (await auth.signInWithCredential(credential)).user;
       //print(await result);
-      users = await auth.currentUser!;
+      users = await auth.currentUser;
       //print(users.uid);
       return await result;
       //return Future.value(result.toString());
@@ -134,9 +134,9 @@ class _MyquizState extends State<Myquiz> {
                 children: <Widget>[
                   Container(
                       height: 200,
-                      width: 230,
+                      // width: 230,
                       child: Image(
-                        image: AssetImage("images/q3.png"),
+                        image: AssetImage("images/q6.png"),
                         fit: BoxFit.contain,
                       )),
 
@@ -163,7 +163,8 @@ class _MyquizState extends State<Myquiz> {
                                   style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.w900,
-                                      color: Colors.redAccent[700]),
+                                      decoration: TextDecoration.underline,
+                                      color: Colors.blue),
                                 ),
                                 TextSpan(
                                   text:
@@ -190,8 +191,9 @@ class _MyquizState extends State<Myquiz> {
                                   text: '${dn}\n',
                                   style: TextStyle(
                                       fontSize: 25,
+                                      decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w900,
-                                      color: Colors.redAccent[700]),
+                                      color: Colors.blue),
                                 ),
                                 TextSpan(
                                   text:
@@ -258,7 +260,7 @@ class _MyquizState extends State<Myquiz> {
                               child: Text("LOGOUT",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.red,
+                                    color: Colors.redAccent[700],
                                     fontSize: 20,
                                   )),
                             )),
@@ -287,7 +289,7 @@ class _MyquizState extends State<Myquiz> {
                               child: Text("Continue >>",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.red,
+                                    color: Colors.redAccent[700],
                                     fontSize: 20,
                                   )),
                             )),
