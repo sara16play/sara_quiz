@@ -9,6 +9,7 @@ import 'package:sara_quiz/pages/quiz.dart';
 import 'package:sara_quiz/pages/fquiz.dart';
 import 'package:random_string/random_string.dart';
 import 'package:sara_quiz/pages/quizhome.dart';
+import 'package:sara_quiz/pages/quizques.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ Future<void> main() async {
   runApp(MaterialApp(
       theme: ThemeData(),
       debugShowCheckedModeBanner: false,
-      initialRoute: "home",
+      initialRoute: "quizhome",
       routes: {
         "home": (context) => MyHome(),
         "reg": (context) => MyReg(),
@@ -31,5 +32,6 @@ Future<void> main() async {
         "fquiz": (context) => MyfinalQ(quizid),
         "addques": (context) => Myaddques(quizid),
         "quizhome": (context) => Myquizhome(),
+        "quizques": (context) => Quizques(quizid),
       }));
 }
